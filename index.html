@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chicken Farmer App</title>
+</head>
+<body>
+    <h1>Chicken Farmer App</h1>
+    <form action="/calculate" method="post">
+        <label for="num_hens">Number of Hens:</label>
+        <input type="number" name="num_hens" id="num_hens" required><br>
+
+        <label for="num_roosters">Number of Roosters:</label>
+        <input type="number" name="num_roosters" id="num_roosters" required><br>
+
+        <label for="incubator_capacity">Incubator Capacity:</label>
+        <input type="number" name="incubator_capacity" id="incubator_capacity" required><br>
+
+        <label for="current_population">Current Population:</label>
+        <input type="number" name="current_population" id="current_population" required><br>
+
+        <label for="projected_population">Projected Population:</label>
+        <input type="number" name="projected_population" id="projected_population" required><br>
+
+        <input type="submit" value="Calculate">
+    </form>
+</body>
+</html>
