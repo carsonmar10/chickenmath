@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}">
+
+    <title>Chicken Farmer App</title>
+</head>
+<body>
+    <div class ="wrapper">
+    <h1>Chicken Farmer App</h1>
+
+    <form action="/" method="post">
+        <label for="num_hens">Number of Hens:</label>
+            <input type="number" name="num_hens" id="num_hens" value="{{ num_hens if num_hens is not none else '' }}" required><br>
+
+            <label for="num_roosters">Number of Roosters:</label>
+            <input type="number" name="num_roosters" id="num_roosters" value="{{ num_roosters if num_roosters is not none else '' }}"><br>
+
+            <label for="incubator_capacity">Incubator Capacity:</label>
+            <input type="number" name="incubator_capacity" id="incubator_capacity" value="{{ incubator_capacity if incubator_capacity is not none else '' }}"><br>
+
+
+        <input type="submit" value="Calculate">
+    </form>
+
+    <!-- Section to display the results -->
+    {% if result %}
+        <h2>Total Number of Eggs:</h2>
+        <p>Per Day: {{ result['total_eggs_per_day'] }}</p>
+        <p>Per Week: {{ result['total_eggs_per_week'] }}</p>
+        <p>Per Month: {{ result['total_eggs_per_month'] }}</p>
+        <p>Per Year: {{ result['total_eggs_per_year'] }}</p>
+
+        <h2>Number of Fertilized Eggs:</h2>
+        <p>Per Day: {{ result['fertilized_eggs_per_day'] }}</p>
+        <p>Per Week: {{ result['fertilized_eggs_per_week'] }}</p>
+        <p>Per Month: {{ result['fertilized_eggs_per_month'] }}</p>
+        <p>Per Year: {{ result['fertilized_eggs_per_year'] }}</p>
+
+        <h2>Number of Hatched Eggs:</h2>
+        <p>Per Day: {{ result['hatched_eggs_per_day'] }}</p>
+        <p>Per Week: {{ result['hatched_eggs_per_week'] }}</p>
+        <p>Per Month: {{ result['hatched_eggs_per_month'] }}</p>
+        <p>Per Year: {{ result['hatched_eggs_per_year'] }}</p>
+
+        <h2>Feed Requirements:</h2>
+        <p>Daily: {{ result['daily_feed'] }} pounds</p>
+        <p>Weekly: {{ result['weekly_feed'] }} pounds</p>
+        <p>Monthly: {{ result['monthly_feed'] }} pounds</p>
+        <p>Yearly: {{ result['yearly_feed'] }} pounds</p>
+
+        <h2>Space Requirements:</h2>
+        <p>Coop Space: {{ result['coop_space'] }} square feet</p>
+        <p>Run Space: {{ result['run_space'] }} square feet</p>
+
+    {% elif result == "Input Invalid" %}
+        <p>Input invalid. Please enter valid numbers.</p>
+    {% elif result == "No data available for calculations." %}
+        <p>No data available for calculations.</p>
+    {% endif %}
+</div>
+</body>
+</html>
+
